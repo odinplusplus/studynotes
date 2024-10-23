@@ -1,0 +1,18 @@
+. what is information ?
+    = something used to differentiate two things
+
+. what does it mean for one date to be more informative than another ?
+    = it can differentiate more things
+    # if I have a collection of names, I can differentiate more people if the name is a first name + last name, than if it were just a first name
+
+. what is the representation of something ?
+    = a possible description of that something
+    # 8 in base 10 is 8; 8 in base 2 is 1000: both 8 and 1000 can represent 8
+    one representation can be more informative than another
+        # today can be described by just the day, or by both the day and the month
+            the second alternative is more informative than the first
+
+. what is data ?
+    = a physical encoding of a representation of an entity
+    # stack of business record papers
+    # numbers represented in binary form stored on an SSD
