@@ -1,0 +1,17 @@
+. what is a resource ?
+    = something that must be acquired and released later
+        < others may want to use them
+    #  memory, shoes on the bowling lane
+
+. what is ownership ?
+    = when someone is the only responsible for releasing the resource
+    # local variable of type String is responsible for releasing the resource it owns when the variable goes out of scope
+        the resource is the memory from the heap
+
+. what is a move ?
+    = someone has ownership of a resource and transfers it to another
+    # when the parameter type of a function is String, the parameter will be the new owner
+
+. what is a borrow ?
+    = the owner will grant access to the resource, but the borrower will not be responsible for releasing the resource
+    # when the parameter is of type &str and goes out of scope, the associated resource will not be released
