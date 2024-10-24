@@ -48,5 +48,152 @@ initialization
 
 after function return, memory used during it is reused
 
+in C++, not only the type is used to describe the object, but also its value category
+
+function marked inline
+    the function is not inline, the function call may be inlined
+        eliminates the overhead of the function call:
+            . cpu instruction to transfer control to the body
+            . placing data on the stack
+            . retrieving the result
+    an exception to the ODR (one definition rule)
+        < the compiler needs to see the function definition in each translation unit that invokes it, since the call is a candidate for inline
+
+strongly typed is different from strongly checked
+    C++ is better type checked than "pure C"
+
+advantage of including a header file in the cpp file
+    < errors that were previously checked at linking time can be checked at compile time
+        # return type of a function in the cpp file being different from the header file    
+
+The best optimizations you can make are those that improve the clarity of what you are doing and maximize the information you give to the compiler
+    # swapping hand-rolled loops for existing algorithms
+
+sentinel
+    = value that indicates the end of a sequence
+    # in strings, '\0'
+
+noexcept is part of the function interface
+    > can have overloads with or without it
+
+compile-time assertion
+    = causes compilation to terminate with a user-supplied error message whenever its constant-expression argument evaluates to false
+
+STREAM
+    streams do not throw exceptions
+        > i must check flags after each operation
+        they are from the era before exceptions
+
+    input/output = transfer of data between a program and an external device  
+        in this case, stream of characters  
+
+    the main purpose of the standard C++ IOStreams is to facilitate text I/O  
+        # read text from input stream  
+        # write text to output stream  
+
+    input of strings  
+        destination is a string  
+        factors for the end of extraction:  
+            . whitespace character is found  
+                whitespace characters = blanks, tabs, newlines  
+            . end of the input is reached  
+            . end-of-string character is found  
+                = '\0'  
+            ...  
+            In contrast, the extraction of items of other types stops once a character is found that does not belong to the format for that type.  
+                = separator character  
+
+    operator>>() = extractor  
+        reads text from an input stream  
+        all extractors ignore whitespace characters that precede the item to be extracted  
+
+    operator<<() = inserter  
+        writes text to an output stream  
+
+    manipulator  
+        can set format flag  
+        can insert/extract to/from a stream  
+        can flush the stream buffer  
+        # endl  
+
+    flush()  
+        = for output stream, synchronize the content of the internal buffer with the content of the external device  
+
+    stages of stream text I/O via iostreams:  
+        1. formatting/parsing  
+            formatting: program data -> character representation  
+            parsing: character representation -> program data  
+            # memory representation of int 52 <-> character sequence 5 and 2  
+        2. buffering  
+            for output: accumulates small character sequences and transfers in larger sequences  
+            for input: reads large chunks and makes them available in smaller pieces  
+        3. code conversion  
+        4. transport  
+
+encapsulation, information hiding, abstraction:  
+    . encapsulation  
+        = process of enclosing one or more things into a single entity  
+        does not imply that information hiding is taking place  
+        # encapsulate statements in a function  
+            advantages:  
+                . less overhead in the mind  
+                . semantic name to the problem  
+                    > better understanding  
+    . information hiding  
+        = you must decide which items you are going to reveal to the outside world  
+        implies that some encapsulation is taking place  
+    . abstraction  
+        = identifying/deciding and isolating the important parts of a problem, drawing them off, discarding the remainder  
+
+substitution of low level language features by std library classes  
+    < greater expressiveness of intent  
+    # replace several if-else statements (when the expr checked is an std::string) with a map  
+        problem with having many branches  
+            = does one of them do something that contradicts the pattern observed in the other branches ?
+        if-else is too general (just like for loops in C)  
+            discovering intent (if the real intent is discovered) takes time  
+
+modules C++20
+    shorter compile times
+    implementation and interface in the same file
+    introduces a new type of linkage
 
 
+advantage of returning by pointer
+    = copying a pointer does not throw an exception
+        copying an object by value, in general, may
+            # if there is heap allocation    
+
+utilizing algorithms instead of primitive language constructs  
+    < semantically, algorithms are more expressive/specific about intent  
+        primitive constructs are generalist: they can be used for many things
+            it takes more words to understand the intent (if understood correctly)  
+
+linking stage  
+    = resolving references  
+        = changing symbolic addresses to actual ones  
+        an object file uses definitions contained in another object  
+
+virtual function  
+    Polymorphic object  
+        = Object of a class type that declares or inherits at least one virtual function  
+        for polymorphism, additional information is stored:  
+            < to determine, at run-time, which implementation to use  
+            . vptr  
+                = ptr to the vtbl of the class  
+                one per instance  
+                for small classes the relative overhead is large  
+            . vtbl  
+                one per class  
+
+    cost of virtual functions: similar to invoking a function via function pointer  
+        give up inlining  
+            vf can be inlined when invoked through objects  
+                but most vf calls are made through pointers or references to objects  
+
+consequences of using more memory in a given class:  
+    . maximum number of objects is decreased  
+    . performance: object may not fit in the cache  
+
+use exceptions only for error handling  
+    not for control flow  
