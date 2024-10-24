@@ -1,0 +1,52 @@
+constructor (or ctor)
+    used to:
+        . initialize the data members of an object
+        . acquire resources
+    the construction of the new object can use an existing object of the same type:
+        . copy ctor
+            = does not modify the provided object
+        . move ctor
+            = does modify the provided object
+            = typically "steal" the resources held by the argument
+                rather than make copies of them
+                leave the argument in some valid but otherwise indeterminate state
+            there are types that do not allow copies, only moves
+                > if a data member is of move-only type, then the class as a whole cannot be copied
+                # std::unique_ptr<>; std::mutex; std::thread; std::atomic<>
+
+temporary object
+    do not assume it is safe to access it in the next statement
+
+reference
+    = an alias for an existing object
+    is not an object
+        > there are no arrays of references
+        > there are no pointers to references
+        > there are no references to references
+    types:
+        . rvalue reference
+            rvalue reference variables are lvalues when used in expressions
+            rvalue reference bind only to objects that are candidates for moving
+                can't bind to lvalue
+            rvalue reference returned from function is rvalue
+            nonconst rvalue reference can bind to temporary object (and extend their lifetime)
+                the main difference with lvalue reference
+        . lvalue reference
+            lvalue reference to const extends lifetime of temporary objects
+            lvalue references can be used to alias an existing object
+                optionally with different cv-qualification
+                    having a lvalue reference to const indicates that I cannot assign via it, not that another part of the program cannot change it during the scope of that reference
+            when a function's return type is lvalue reference, the function call expression becomes an lvalue expression:
+                > return can be assigned
+                    # access of an element in a vector
+
+initialization
+    = determining the value of a variable at the time of its construction
+    also occurs in function calls
+        each parameter is initialized
+        return value is also initialized
+
+after function return, memory used during it is reused
+
+
+
