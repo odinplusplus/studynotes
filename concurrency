@@ -1,0 +1,30 @@
+. what is concurrency?  
+    = breaking a unit of work into primitive units of work that can be executed independently (in an ideal scenario)  
+        primitive unit of work = thread  
+        > relative order of execution does not matter  
+        > if the primitive unit of work cannot execute, another primitive unit can be executed in its place  
+            one reason the first cannot execute is waiting for access to memory  
+
+
+. what is lock programming?  
+    = at most one thread progresses  
+        if progress occurs, it will be with the thread holding the lock  
+            even the thread with the lock may not progress  
+                < it may be waiting for another lock  
+                    risk of deadlock  
+                        = one thread waiting for another, which is also waiting for it  
+    synchronization via locks  
+    progress = (in many cases) modifying an atomic variable  
+
+. what is lock-free?  
+    = only one thread can make progress  
+        one thread commits its work (value to modify the shared variable)  
+        others redo their work  
+            if one thread retries, then another thread must have progressed  
+    synchronization via atomic operation that conditions the modification of the shared variable  
+        # compare_exchange_strong()  
+
+. what is wait-free?  
+    all threads progress  
+    the only synchronization is through the atomicity of operations  
+        does not condition the modification of the data  
