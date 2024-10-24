@@ -48,7 +48,12 @@ initialization
 
 after function return, memory used during it is reused
 
-in C++, not only the type is used to describe the object, but also its value category
+in C++, an expression is described by two independent properties: type and value category.
+
+in C++, an object, a reference, a function, and an expression are described by one property: type
+    type restricts the possible operations with such entities
+    type gives a semantic meaning to the sequence of bits
+        two sequences of bits may be identical but mean different things
 
 function marked inline
     the function is not inline, the function call may be inlined
