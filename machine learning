@@ -16,3 +16,57 @@
     = a physical encoding of a representation of an entity
     # stack of business record papers
     # numbers represented in binary form stored on an SSD
+
+. what is a function ?  
+    = association between the elements of one set (domain) and the elements of another set (codomain)  
+    an element of the domain is associated with only one element of the codomain  
+        such an element of the codomain, in this case, is called the image of the element of the domain  
+    input = element of the domain  
+    output = image of the input  
+    # associate the days of the week (monday, tuesday, ...) to my evaluation (good or bad)  
+        all days of the week are 'good' for me!  
+    solving real-world problems can use equations  
+        'problem' can be used as a synonym for 'process' in various situations  
+        # from 'I have 10 dollars. I went to the market and spent 3 dollars. I found 2 dollars on the street. How many dollars do I have?' to 'x=10-3+2'  
+            note that x is a pure number without semantics (in the case of this problem, it would be dollars that the individual possesses)  
+        functions can be used when the input varies, applying equations to other situations  
+            ! we can do this because we have access to information that influences the problem  
+            # in the previous example, the amount of dollars found on the street can be made a variable: x = 10-3+d  
+            ! we went from problem information -> function -> data, but what if we do the opposite ?  
+                = from a dataset about 'process executions' obtain a function that describes the problem/process
+                    < obtain the solution for other inputs  
+                    < understand the nature/structure of the problem  
+                        remember that in the reverse path we had access to information that influences the problem, but not in this case
+                        why is the data like this?
+                        # the structure of the hydrogen atom was 'elucidated' from the function/equation of energy transition obtained via data  
+
+. what is a parameter ?  
+    = the parameter of a function can be understood as an identifier for that function within a group of functions  
+
+. what is function composition ?  
+    = describing a more complex function using simpler functions already known  
+    uses:  
+        . facilitate the interpretation of the more complex function  
+        . calculate the derivative of this new function  
+            you have no idea how difficult it is to calculate the derivative by formal definition        
+
+. what is a pattern ?  
+    = describing a function with 'simpler' functions  
+        ! note the similarity with the definition of function composition  
+    identification of a pattern is subjective  
+        < depends on the functions that the individual (or machine) already knows  
+
+. what is machine learning ?  
+    = automated search for a function from data about a certain problem/process
+        the function is that of the path 'data -> function -> problem' in the item 'what is a function ?'  
+
+. what is a neural network ?  
+    = describes a complex function through the composition of simpler functions  
+    since there is composition, it learns not just one, but each one of the functions that makes up the network  
+        > can be reused in other networks  
+        > easier to interpret the network  
+
+. what is deep learning ?  
+    = a type of machine learning that uses neural networks  
+    a set of functions is defined (by having defined the primitive functions used), and an attempt is made to find a 'good' function
+        'good' function = you can define what this means
